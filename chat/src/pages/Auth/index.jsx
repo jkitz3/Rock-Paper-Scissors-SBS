@@ -17,5 +17,5 @@ export const Auth = () => {
         </Block>
       </div>
     </section>
-  )
-}
+  );
+};
