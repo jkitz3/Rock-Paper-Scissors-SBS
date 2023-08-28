@@ -1,3 +1,3 @@
-import LoginFom from './containers/LoginForm';
+import LoginForm from './containers/LoginForm';
 
-export default LoginFom;
+export default LoginForm;

@@ -18,7 +18,7 @@
   }
 
   .auth_top > p {
-    font-size:  16px;
+    font-size: 16px;
     line-height: 21px;
     letter-spacing: 0.1px;
     opacity: 0.5;
@@ -35,11 +35,25 @@
     letter-spacing: 0.1px;
   }
 
-  .auth__register-link {
+  .auth__register-link,
+  .auth__login-link {
     text-align: center;
     display: block;
     font-size: 16px;
     letter-spacing: 0.1px;
-    color: #ADADAD;
+    color: #adadad;
+  }
+
+  .auth__success-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 400px;
+  }
+
+  .auth__success-block > p {
+    color: #adadad;
   }
 }

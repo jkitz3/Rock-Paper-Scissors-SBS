@@ -1,20 +1,19 @@
 import React from 'react';
-import { LoginForm } from '../../modules/LoginForm/components/LoginForm';
-import { Block } from '../../components';
+import { Route, Routes } from 'react-router-dom';
+
+import { LoginForm, RegisterForm } from '../../modules';
 
 import './Auth.css';
 
 export const Auth = () => {
   return (
     <section className="auth">
-      <div className="auth_content">
-        <div className="auth_top">
-          <h2>Вход</h2>
-          <p>Пожалуйста, войдите в свой аккаунт</p>
-        </div>
-        <Block>
-          <LoginForm />
-        </Block>
+      <div className="auth__content">
+        <Routes>
+          <Route path="/" Component={LoginForm} />
+          <Route path="/login" Component={LoginForm} />
+          <Route path="/register" Component={RegisterForm} />
+        </Routes>
       </div>
     </section>
   );
