@@ -13,7 +13,9 @@ code {
     monospace;
 }
 
-html, #root, .App {
+html,
+#root,
+.App {
   height: 100%;
 }
 
