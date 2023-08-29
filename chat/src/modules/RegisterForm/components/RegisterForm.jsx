@@ -13,6 +13,7 @@ import { Button, Block } from '../../../components';
 export const RegisterForm = () => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
+    return;
   };
 
   const success = true;

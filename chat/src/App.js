@@ -1,17 +1,17 @@
-import { Auth, Home } from './pages';
+import React from 'react';
+import { Auth, Chat } from './pages';
 import { Route, Routes } from 'react-router-dom';
 
-function App() {
+export const App=()=> {
   return (
     <div className="App">
       <div className="wrapper">
         <Routes>  
           <Route path="/*" Component={Auth} />
-          <Route path="/home" Component={Home} />
+          <Route path="/chat" Component={Chat} />
         </Routes>
       </div>
     </div>
   );
 }
 
-export default App;

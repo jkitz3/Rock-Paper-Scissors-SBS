@@ -1,3 +1,3 @@
-import RegisterForm from '../components/RegisterForm';
+// import RegisterForm from '../components/RegisterForm';
 
-export default RegisterForm;
+// export default RegisterForm;

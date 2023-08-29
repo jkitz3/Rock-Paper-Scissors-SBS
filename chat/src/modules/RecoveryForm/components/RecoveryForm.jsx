@@ -1,50 +1,36 @@
 import React from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LockOutlined } from '@ant-design/icons';
 import { Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { Button, Block } from '../../../components';
 
-export const LoginForm = () => {
+export const RecoveryForm = () => {
   const onFinish = () => {
     return;
   };
+
   return (
     <>
       <div className="auth_top">
-        <h2>Вход</h2>
-        <p>Пожалуйста, войдите в свой аккаунт</p>
+        <h2>Восстановление пароля</h2>
+        <p>Пожалуйста, придумайте новый пароль</p>
       </div>
       <Block>
         <Form
-          name="normal_login"
-          className="login-form"
+          name="normal_recovery"
+          className="recovery-form"
           initialValues={{
             remember: true,
           }}
           onFinish={onFinish}
         >
           <Form.Item
-            name="username"
+            name="new_password"
             rules={[
               {
                 required: true,
-                message: 'Введите имя пользователя',
-              },
-            ]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              size="large"
-              placeholder="Имя пользователя"
-            />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: 'Введите пароль',
+                message: 'Введите новый пароль',
               },
             ]}
           >
@@ -52,21 +38,32 @@ export const LoginForm = () => {
               prefix={<LockOutlined className="site-form-item-icon" />}
               size="large"
               type="password"
-              placeholder="Пароль"
+              placeholder="Новый пароль"
+            />
+          </Form.Item>
+          <Form.Item
+            name="confirm_new_password"
+            rules={[
+              {
+                required: true,
+                message: 'Повторите пароль',
+              },
+            ]}
+          >
+            <Input
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              size="large"
+              type="password"
+              placeholder="Повторите пароль"
             />
           </Form.Item>
           <Form.Item>
-            <Link className="login-form-forgot" to="/recovery">
-              Восстановление пароля
-            </Link>
-          </Form.Item>
-          <Form.Item>
             <Button type="primary" size="large">
-              Войти
+              Обновить пароль
             </Button>
           </Form.Item>
-          <Link className="auth__register-link" to="/register">
-            Зарегистрироваться
+          <Link className="auth__login-link" to="/login">
+            Войти
           </Link>
         </Form>
       </Block>

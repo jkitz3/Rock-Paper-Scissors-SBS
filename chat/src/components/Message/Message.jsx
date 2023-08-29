@@ -4,8 +4,10 @@ import { ru } from 'date-fns/locale';
 import cx from 'classnames';
 
 import styles from './Message.module.css';
+import readSvg from '../../assets/img/read.svg';
+import notReadSvg from '../../assets/img/notRead.svg';
 
-export const Message = ({ avatar, text, date, user = {}, owner }) => {
+export const Message = ({ avatar, text, date, user = {}, owner, isRead }) => {
   return (
     <div className={cx(styles.message, { [styles.owner]: owner })}>
       <div className={styles.message__avatar}>
@@ -19,6 +21,11 @@ export const Message = ({ avatar, text, date, user = {}, owner }) => {
           {formatDistanceToNow(date, { addSuffix: true, locale: ru })}
         </span>
       </div>
+      {isRead ? (
+        <img src={readSvg} alt="read icon" />
+      ) : (
+        <img src={notReadSvg} alt="not read icon" />
+      )}
     </div>
   );
 };
