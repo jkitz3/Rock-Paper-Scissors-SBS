@@ -1,7 +1,7 @@
 .message {
   display: flex;
   padding-bottom: 20px;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .message > img {
@@ -31,7 +31,7 @@
 .owner > .message__content > .message__bubble {
   background: #fff;
   box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.196733);
-  border-radius: 12px 12px 12px 0px;
+  border-radius: 12px 12px 0px 12px;
   padding: 10px 15px 10px 15px;
   max-width: 400px;
 }
@@ -52,11 +52,68 @@
 }
 
 .message__content {
-  /* display: flex;
-  flex-direction: column; */
 }
 
 .owner {
   display: flex;
   flex-direction: row-reverse;
+}
+
+.message__attachments {
+  display: flex;
+  max-width: 400px;
+  /* flex-direction: column; */
+}
+
+.message__attachments-item-img {
+  max-height: 100px;
+  border-radius: 3px;
+  padding: 2px;
+  margin: 2px 2px 2px 0px;
+  border: 1px solid #adadad;
+  cursor: pointer;
+}
+
+.is-typing {
+  box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.04);
+  margin-bottom: 0;
+  background: #e5edff;
+}
+
+.message__typing {
+}
+
+.message__typing-bubble {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #a6bdf0;
+  display: inline-block;
+  margin-right: 8px;
+  animation: 0.8s typingAnimation infinite ease-out 0.1s;
+}
+
+.message__typing-bubble:nth-of-type(2) {
+  animation: 0.8s typingAnimation infinite ease-out 0.2s;
+}
+
+.message__typing-bubble:nth-of-type(3) {
+  animation: 0.8s typingAnimation infinite ease-out 0.3s;
+  margin-right: 0;
+}
+
+@keyframes typingAnimation {
+  from {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.message__attachments-item-single-img {
+  max-height: 400px;
 }

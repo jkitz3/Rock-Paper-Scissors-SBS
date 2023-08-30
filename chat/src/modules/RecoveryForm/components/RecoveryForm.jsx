@@ -4,11 +4,19 @@ import { Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { Button, Block } from '../../../components';
+import { validateField } from '../../../utils/helpers/validateField';
 
-export const RecoveryForm = () => {
-  const onFinish = () => {
-    return;
-  };
+export const RecoveryForm = (props) => {
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleSubmit,
+    handleBlur,
+    isValid,
+    isSubmiting,
+  } = props;
 
   return (
     <>
@@ -17,48 +25,48 @@ export const RecoveryForm = () => {
         <p>Пожалуйста, придумайте новый пароль</p>
       </div>
       <Block>
-        <Form
-          name="normal_recovery"
-          className="recovery-form"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-        >
+        <Form onSubmit={handleSubmit} className="recovery-form">
           <Form.Item
-            name="new_password"
-            rules={[
-              {
-                required: true,
-                message: 'Введите новый пароль',
-              },
-            ]}
+            validateStatus={validateField('new_password', touched, errors)}
+            help={!touched.new_password ? '' : errors.new_password}
+            hasFeedback
           >
             <Input
+              id="new_password"
               prefix={<LockOutlined className="site-form-item-icon" />}
               size="large"
               type="password"
-              placeholder="Новый пароль"
+              placeholder="Пароль"
+              value={values.new_password}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Form.Item>
           <Form.Item
-            name="confirm_new_password"
-            rules={[
-              {
-                required: true,
-                message: 'Повторите пароль',
-              },
-            ]}
+            validateStatus={validateField(
+              'confirm_new_password',
+              touched,
+              errors
+            )}
+            help={
+              !touched.confirm_new_password ? '' : errors.confirm_new_password
+            }
+            hasFeedback
           >
             <Input
+              id="confirm_new_password"
               prefix={<LockOutlined className="site-form-item-icon" />}
               size="large"
               type="password"
               placeholder="Повторите пароль"
+              value={values.confirm_new_password}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" size="large">
+            {isSubmiting && isValid && <span>Ошибка</span>}
+            <Button onClick={handleSubmit} type="primary" size="large">
               Обновить пароль
             </Button>
           </Form.Item>

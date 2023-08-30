@@ -9,12 +9,19 @@ import { Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { Button, Block } from '../../../components';
+import { validateField } from '../../../utils/helpers/validateField';
 
-export const RegisterForm = () => {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-    return;
-  };
+export const RegisterForm = (props) => {
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleSubmit,
+    handleBlur,
+    isValid,
+    isSubmiting,
+  } = props;
 
   const success = true;
 
@@ -22,82 +29,80 @@ export const RegisterForm = () => {
     <>
       <div className="auth_top">
         <h2>Регистрация</h2>
-        <p>Пожалуйста, зарегистрируйте аккаунт</p>
+        <p>Пожалуйста, зарегистрируйтесь</p>
       </div>
       <Block>
         {success ? (
-          <Form
-            name="normal_register"
-            className="register-form"
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
-          >
+          <Form onSubmit={handleSubmit} className="register-form">
             <Form.Item
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  message: 'Введите почту',
-                },
-              ]}
+              validateStatus={validateField('email', touched, errors)}
+              help={!touched.email ? '' : errors.email}
+              hasFeedback
             >
               <Input
+                id="email"
                 prefix={<MailOutlined />}
                 size="large"
                 placeholder="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item
-              name="username"
-              rules={[
-                {
-                  required: true,
-                  message: 'Введите имя пользователя',
-                },
-              ]}
+              validateStatus={validateField('username', touched, errors)}
+              help={!touched.username ? '' : errors.username}
+              hasFeedback
             >
               <Input
+                id="username"
                 prefix={<UserOutlined className="site-form-item-icon" />}
                 size="large"
                 placeholder="Имя"
+                value={values.username}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item
-              name="password"
-              rules={[
-                {
-                  required: true,
-                  message: 'Введите пароль',
-                },
-              ]}
+              validateStatus={validateField('password', touched, errors)}
+              help={!touched.password ? '' : errors.password}
+              hasFeedback
             >
               <Input
+                id="password"
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 size="large"
                 type="password"
                 placeholder="Пароль"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item
-              name="confirm_password"
-              rules={[
-                {
-                  required: true,
-                  message: 'Повторите пароль',
-                },
-              ]}
+              validateStatus={validateField(
+                'confirm_password',
+                touched,
+                errors
+              )}
+              help={!touched.confirm_password ? '' : errors.confirm_password}
+              hasFeedback
             >
               <Input
+                id="confirm_password"
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 size="large"
                 type="password"
                 placeholder="Повторите пароль"
+                value={values.confirm_password}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" size="large">
+              {isSubmiting && isValid && <span>Ошибка</span>}
+              <Button onClick={handleSubmit} type="primary" size="large">
                 Зарегистрироваться
               </Button>
             </Form.Item>

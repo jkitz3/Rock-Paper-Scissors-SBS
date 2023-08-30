@@ -1,14 +1,23 @@
 import React from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { Button, Block } from '../../../components';
+import { validateField } from '../../../utils/helpers/validateField';
 
-export const LoginForm = () => {
-  const onFinish = () => {
-    return;
-  };
+export const LoginForm = (props) => {
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleSubmit,
+    handleBlur,
+    isValid,
+    isSubmiting,
+  } = props;
+
   return (
     <>
       <div className="auth_top">
@@ -16,43 +25,36 @@ export const LoginForm = () => {
         <p>Пожалуйста, войдите в свой аккаунт</p>
       </div>
       <Block>
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-        >
+        <Form onSubmit={handleSubmit} className="login-form">
           <Form.Item
-            name="username"
-            rules={[
-              {
-                required: true,
-                message: 'Введите имя пользователя',
-              },
-            ]}
+            validateStatus={validateField('email', touched, errors)}
+            help={!touched.email ? '' : errors.email}
+            hasFeedback
           >
             <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
+              id="email"
+              prefix={<MailOutlined className="site-form-item-icon" />}
               size="large"
-              placeholder="Имя пользователя"
+              placeholder="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Form.Item>
           <Form.Item
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: 'Введите пароль',
-              },
-            ]}
+            validateStatus={validateField('password', touched, errors)}
+            help={!touched.password ? '' : errors.password}
+            hasFeedback
           >
             <Input
+              id="password"
               prefix={<LockOutlined className="site-form-item-icon" />}
               size="large"
               type="password"
               placeholder="Пароль"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Form.Item>
           <Form.Item>
@@ -61,7 +63,8 @@ export const LoginForm = () => {
             </Link>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" size="large">
+            {isSubmiting && isValid && <span>Ошибка</span>}
+            <Button onClick={handleSubmit} type="primary" size="large">
               Войти
             </Button>
           </Form.Item>

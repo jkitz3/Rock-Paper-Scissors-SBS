@@ -1,3 +1,3 @@
-// import RecoveryForm from './components';
+import RecoveryForm from './containers/RecoveryForm';
 
-// export default RecoveryForm;
+export default RecoveryForm;
