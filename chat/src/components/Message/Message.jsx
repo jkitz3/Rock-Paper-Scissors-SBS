@@ -1,11 +1,7 @@
-import React from 'react';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { ru } from 'date-fns/locale';
 import cx from 'classnames';
 
+import { Time, IconRead } from '../';
 import styles from './Message.module.css';
-import readSvg from '../../assets/img/read.svg';
-import notReadSvg from '../../assets/img/notRead.svg';
 
 export const Message = ({
   avatar,
@@ -64,19 +60,11 @@ export const Message = ({
         )}
         {date && (
           <span className={styles.message__date}>
-            {formatDistanceToNow(date, { addSuffix: true, locale: ru })}
+            <Time date={date} />
           </span>
         )}
       </div>
-      {!isTyping ? (
-        isRead ? (
-          <img src={readSvg} alt="read icon" />
-        ) : (
-          <img src={notReadSvg} alt="not read icon" />
-        )
-      ) : (
-        ''
-      )}
+      <IconRead isTyping={isTyping} isRead={isRead} />
     </div>
   );
 };

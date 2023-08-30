@@ -4,24 +4,21 @@
   align-items: flex-end;
 }
 
-.message > img {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
+.message__avatar {
+  flex: 0 0 92px;
 }
 
 .message__avatar > img {
   width: 69px;
   height: 69px;
   border-radius: 50%;
-  margin-right: 13px;
-  margin-left: 13px;
+  margin-right: 10px;
+  margin-left: 10px;
   border: 1px solid #adadad;
 }
 
 .message__bubble {
-  background: #3674ff;
+  background: #3e4c6e;
   box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.196733);
   border-radius: 12px 12px 12px 0px;
   padding: 10px 15px 10px 15px;
@@ -29,17 +26,17 @@
 }
 
 .owner > .message__content > .message__bubble {
-  background: #fff;
+  background: #5075a9;
   box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.196733);
   border-radius: 12px 12px 0px 12px;
   padding: 10px 15px 10px 15px;
   max-width: 400px;
 }
 
-.owner > .message__content > .message__bubble > .message__text {
+/* .owner > .message__content > .message__bubble > .message__text {
   color: #000;
   line-height: 20px;
-}
+} */
 
 .message__text {
   color: #fff;
@@ -66,7 +63,7 @@
 }
 
 .message__attachments-item-img {
-  max-height: 100px;
+  max-height: 200px;
   border-radius: 3px;
   padding: 2px;
   margin: 2px 2px 2px 0px;
