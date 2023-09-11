@@ -1,14 +1,13 @@
 .chat {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
   background: #c0d1b8;
-  /* #f5f8fc */
 }
 
 .dialogs {
   flex-grow: 1;
   background: #1e1f27;
+  max-width: 600px;
 }
 
 .messages {

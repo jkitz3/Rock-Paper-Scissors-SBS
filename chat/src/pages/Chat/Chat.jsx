@@ -1,34 +1,45 @@
 import styles from './Chat.module.css';
 
-import { Message, DialogItem } from '../../components';
+import { Message, Dialogs } from '../../components';
+import audioSample from '../../assets/audio/sample.mp3';
+import audioAttention from '../../assets/audio/attention.mp3';
 
 export const Chat = () => {
   return (
     <section className={styles.chat}>
       <div className={styles.dialogs}>
-        <div className="dialogs__item">
-          <DialogItem
-            user={{
-              avatar:
-                'https://funart.top/uploads/posts/2022-08/1660053661_44-funart-pro-p-krutaya-devushka-art-krasivo-49.jpg',
-              username: 'Mary Polo',
-              isOnline: true,
-            }}
-            date={new Date(2023, 7, 29, 36, 30)}
-            message="Некоторое время назад в работе над клиентской (javascript) частью движка josi возникла"
-            newMessageCount={3}
-          />
-          <DialogItem
-            user={{
-              avatar:
-                'https://pixelbox.ru/wp-content/uploads/2022/08/avatar-boy-telegram-pixelbox.ru-86.jpg',
-              username: 'Garry Lolo',
-              isOnline: false,
-            }}
-            date={new Date(2023, 7, 29, 43, 40)}
-            message="Причина такого поведения известна и понятна, и в той или иной форме всегда вызвана следующим"
-          />
-        </div>
+        <Dialogs
+          items={[
+            {
+              _id: 1,
+              user: {
+                _id: 1,
+                username: 'Mary Polo',
+                avatar:
+                  'https://funart.top/uploads/posts/2022-08/1660053661_44-funart-pro-p-krutaya-devushka-art-krasivo-49.jpg',
+                isOnline: true,
+              },
+              newMessagesCount: 5,
+              created_at: new Date(2023, 8, 5, 22, 9),
+              text: 'Некоторое время назад в работе над клиентской (javascript) частью движка josi возникла',
+              isRead: true,
+            },
+            {
+              _id: 2,
+              user: {
+                _id: 2,
+                username: 'Garry Polar',
+                avatar:
+                  'https://pixelbox.ru/wp-content/uploads/2022/08/avatar-boy-telegram-pixelbox.ru-86.jpg',
+                isOnline: false,
+              },
+              newMessagesCount: null,
+              created_at: new Date(2023, 8, 4, 22, 2),
+              text: 'Причина такого поведения известна и понятна, и в той или иной форме всегда вызвана следующим',
+              isRead: false,
+            },
+          ]}
+        />
       </div>
       <div className={styles.messages}>
         <Message
@@ -101,6 +112,17 @@ export const Chat = () => {
               url: 'https://u.9111s.ru/uploads/202306/12/3e1a42efef361843427d54d6034b25fa.jpg',
             },
           ]}
+        />
+        <Message
+          avatar="https://funart.top/uploads/posts/2022-08/1660053661_44-funart-pro-p-krutaya-devushka-art-krasivo-49.jpg"
+          audio={audioAttention}
+          date={new Date(2023, 7, 29, 38, 30)}
+        />
+        <Message
+          avatar="https://pixelbox.ru/wp-content/uploads/2022/08/avatar-boy-telegram-pixelbox.ru-86.jpg"
+          audio={audioSample}
+          date={new Date(2023, 7, 29, 38, 30)}
+          owner
         />
         <Message
           avatar="https://funart.top/uploads/posts/2022-08/1660053661_44-funart-pro-p-krutaya-devushka-art-krasivo-49.jpg"

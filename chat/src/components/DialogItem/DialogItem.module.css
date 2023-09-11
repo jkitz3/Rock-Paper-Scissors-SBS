@@ -4,6 +4,7 @@
   padding: 5px 15px 5px 0px;
   min-width: 400px;
   align-items: center;
+  cursor: pointer;
 }
 .dialogs__item:hover {
   background: #5075a9;
@@ -43,6 +44,10 @@
 .dialogs__item-info-top-username {
   font-weight: 700;
   color: #fff;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 150px;
+  white-space: nowrap;
 }
 
 .dialogs__item-info {

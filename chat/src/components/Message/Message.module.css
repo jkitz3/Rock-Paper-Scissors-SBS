@@ -5,12 +5,12 @@
 }
 
 .message__avatar {
-  flex: 0 0 92px;
+  flex: 0 0 82px;
 }
 
 .message__avatar > img {
-  width: 69px;
-  height: 69px;
+  width: 59px;
+  height: 59px;
   border-radius: 50%;
   margin-right: 10px;
   margin-left: 10px;
@@ -23,20 +23,17 @@
   border-radius: 12px 12px 12px 0px;
   padding: 10px 15px 10px 15px;
   max-width: 400px;
+  position: relative;
+  overflow: hidden;
 }
 
-.owner > .message__content > .message__bubble {
+.owner .message__bubble {
   background: #5075a9;
   box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.196733);
   border-radius: 12px 12px 0px 12px;
   padding: 10px 15px 10px 15px;
   max-width: 400px;
 }
-
-/* .owner > .message__content > .message__bubble > .message__text {
-  color: #000;
-  line-height: 20px;
-} */
 
 .message__text {
   color: #fff;
@@ -49,6 +46,7 @@
 }
 
 .message__content {
+  
 }
 
 .owner {
@@ -59,7 +57,6 @@
 .message__attachments {
   display: flex;
   max-width: 400px;
-  /* flex-direction: column; */
 }
 
 .message__attachments-item-img {
@@ -104,7 +101,7 @@
     opacity: 0.2;
   }
   50% {
-    opacity: 0.6;
+    opacity: 0.5;
   }
   to {
     opacity: 1;
@@ -113,4 +110,67 @@
 
 .message__attachments-item-single-img {
   max-height: 400px;
+}
+
+.message__audio {
+
+}
+
+.message__audio > audio {
+  display: none;
+}
+
+.message__audio-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.audio {
+
+}
+
+.message__audio-btn {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: #17215a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.message__audio-btn > img {
+  width: 11px;
+}
+
+.audio-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.message__audio-wave {
+  margin-right: 10px;
+}
+
+.message__audio-duration {
+  color: #fff;
+  opacity: 0.6;
+}
+
+.message__audio-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #5075a9;
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.owner .message__audio-progress {
+  background-color: #3e4c6e;
 }

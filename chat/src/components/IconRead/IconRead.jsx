@@ -1,5 +1,5 @@
 import readSvg from '../../assets/img/read.svg';
-import notReadSvg from '../../assets/img/notRead.svg';
+import notReadSvg from '../../assets/img/notread.svg';
 
 export const IconRead = ({ isTyping, isRead }) => {
   return !isTyping ? (
